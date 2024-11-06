@@ -62,11 +62,13 @@ class SendMessage extends ResourceController
             ]
         ];
 
-        return file_get_contents(
+        $result = file_get_contents(
             'https://waba.ivosights.com/api/v1/messages/send-template-message', 
             false, 
             stream_context_create($options)
         );
+
+        return $this->respond(json_decode($result, true));
     }
     
     /**
@@ -102,11 +104,13 @@ class SendMessage extends ResourceController
             ]
         ];
 
-        return file_get_contents(
+        $result = file_get_contents(
             'https://waba.ivosights.com/api/v1/messages/send-text-message', 
             false, 
             stream_context_create($options)
         );
+
+        return $this->respond(json_decode($result, true));
     }
     
     /**
@@ -144,10 +148,12 @@ class SendMessage extends ResourceController
             ]
         ];
 
-        return file_get_contents(
+        $result = file_get_contents(
             'https://waba.ivosights.com/api/v1/messages/send-media-message', 
             false, 
             stream_context_create($options)
         );
+
+        return $this->respond(json_decode($result, true));
     }
 }
